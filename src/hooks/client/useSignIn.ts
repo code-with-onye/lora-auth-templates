@@ -3,7 +3,11 @@ import { z } from "zod";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-import { SignUserSchema } from "@/schema/user";
+const SignUserSchema = z.object({
+    name: z.string(),
+    email: z.string().email(),
+    token: z.string(),
+})
 
 interface UserState {
   user: z.infer<typeof SignUserSchema> | null;

@@ -1,13 +1,10 @@
+import { SignUserSchema } from "@/schema";
 import Cookies from "js-cookie";
 import { z } from "zod";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-const SignUserSchema = z.object({
-    name: z.string(),
-    email: z.string().email(),
-    token: z.string(),
-})
+
 
 interface UserState {
   user: z.infer<typeof SignUserSchema> | null;
